@@ -1,0 +1,47 @@
+models:
+  Category:
+    title: string:255
+    description: string:400
+    image: string:255
+    relationships:
+      hasMany: Product
+  Product:
+    title: string:255
+    description: string:400
+    price: double:8,2
+    image: string:255
+    category_id: id foreign
+    relationships:
+      belongsTo: Category
+  Order:
+    product_id: id foreign
+    user_id: id foreign
+    amount: integer
+    relationships:
+      hasMany: Product
+  Basket:
+    user_id: id foreign
+    product_id: id foreign
+    relationships:
+      belongsTo: /App/Models/User, Product
+  Favorite:
+    user_id: id foreign
+    product_id: id foreign
+    relationships:
+      belongsTo: /App/Models/User, Product
+  Role:
+    title: string:255
+    slug: string:255
+
+
+controllers:
+  Category:
+    resource: api.index, api.show
+  Product:
+    resource: api.index, api.show
+  Order:
+    resource: api.index, api.show, api.store
+  Basket: 
+    resource: api
+  Favorite: 
+    resource: api
