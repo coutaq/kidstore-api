@@ -28,7 +28,7 @@ class ProductFactory extends Factory
             'description' => $this->faker->text,
             'price' => $this->faker->randomFloat(2, 0, 999999.99),
             'image' => $this->faker->regexify('[A-Za-z0-9]{255}'),
-            'category_id' => Category::factory(),
+            'category_id' => Category::inRandomOrder()->first()->id,
         ];
     }
 }
