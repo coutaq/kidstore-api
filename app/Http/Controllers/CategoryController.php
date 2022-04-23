@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index(Request $request)
     {
-        $categories = Category::with('products')->all();
+        $categories = Category::with('products')->get();
 
         return new CategoryCollection($categories);
     }
